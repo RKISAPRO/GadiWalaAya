@@ -33,6 +33,12 @@ public class UIEvents : MonoBehaviour
     public float MoveSpeedUpgradeIncreaseValueForLevel1;
     public float MoveSpeedUpgradeIncreaseValueForLevel2;
     public float MoveSpeedUpgradeIncreaseValueForLevel3;
+    [HideInInspector] public bool MiniGarbageBinItemPurchased = false;
+    [HideInInspector] public bool MiniShopStallItemPurchased = false;
+    public int minigarbagebinitemprice;
+    public int minishopstallitemprice;
+    public GameObject MGBIB;
+    public GameObject MSSIB;
     
     private void Start() 
     {
@@ -136,6 +142,26 @@ public class UIEvents : MonoBehaviour
             Moregarbagepickupgradelevel3purchased = true;
             MoreGarbagePickUpgradeLevel = 3;
             MGPUL3PB.gameObject.SetActive(true);
+        }
+    }
+
+    public void PurchaseMiniGarbageBinItem()
+    {
+        if(CoinCounter.CoinCollected >= minigarbagebinitemprice && !MiniGarbageBinItemPurchased)
+        {
+            CoinCounter.CoinCollected -= minigarbagebinitemprice;
+            MiniGarbageBinItemPurchased = true;
+            MGBIB.gameObject.SetActive(true);
+        }
+    }
+
+    public void PurchaseMiniShopStallItem()
+    {
+        if(CoinCounter.CoinCollected >= minishopstallitemprice && !MiniShopStallItemPurchased)
+        {
+            CoinCounter.CoinCollected -= minishopstallitemprice;
+            MiniShopStallItemPurchased = true;
+            MSSIB.gameObject.SetActive(true);
         }
     }
 }

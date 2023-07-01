@@ -8,6 +8,7 @@ public class ShowShop : MonoBehaviour
     public GameObject ShopPanel;
     public LayerMask Shop;
     public KeyCode ShopKey = KeyCode.E;
+    public KeyCode MiniShopKey = KeyCode.M;
     public float ShopPlayerRange = 1;
     private bool playerInShopRange;
     [HideInInspector] public bool ShopPanelOpen;
@@ -61,6 +62,17 @@ public class ShowShop : MonoBehaviour
         {
             UpgradesPanel.gameObject.SetActive(false);
             ItemsPanel.gameObject.SetActive(true);
+        }
+
+        if(UIEvents.MiniGarbageBinItemPurchased && Input.GetKey(MiniShopKey) && !ShowDeposit.DepositerPanelOpen)
+        {
+            ShopPanel.gameObject.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            ShowDeposit.gameCam.gameObject.SetActive(false);
+            ShopPanelOpen = true;
+            UIEvents.UpgradesMenuIsActive = true;
+            UIEvents.ItemsMenuIsActive = false;
         }
     }
 

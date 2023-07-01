@@ -3,18 +3,21 @@ using UnityEngine;
 public class ShowDeposit : MonoBehaviour
 {
     private ShowShop ShowShop;
+    private UIEvents UIEvents;
     public GameObject depositerObj;
     public GameObject depositerPanel;
     public float PlayerRange = 1;
     private bool playerInRange;
     public LayerMask Depositer;
     public KeyCode DepositKey = KeyCode.E;
+    public KeyCode MiniDepositKey = KeyCode.N;
     public GameObject gameCam;
     [HideInInspector] public bool DepositerPanelOpen;
 
     private void Start() 
     {
         ShowShop = GetComponent<ShowShop>();
+        UIEvents = GetComponent<UIEvents>();
     }
     
     private void Update()
@@ -45,6 +48,15 @@ public class ShowDeposit : MonoBehaviour
             Cursor.visible = false;
             gameCam.gameObject.SetActive(true);
             DepositerPanelOpen = false;
+        }
+
+        if(UIEvents.MiniGarbageBinItemPurchased && Input.GetKey(MiniDepositKey) && !ShowShop.ShopPanelOpen)
+        {
+            depositerPanel.gameObject.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            gameCam.gameObject.SetActive(false);
+            DepositerPanelOpen = true;
         }
     }
     
