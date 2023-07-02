@@ -13,11 +13,13 @@ public class ShowDeposit : MonoBehaviour
     public KeyCode MiniDepositKey = KeyCode.N;
     public GameObject gameCam;
     [HideInInspector] public bool DepositerPanelOpen;
+    private PlayerMovement PM;
 
     private void Start() 
     {
         ShowShop = GetComponent<ShowShop>();
-        UIEvents = GetComponent<UIEvents>();
+        UIEvents = FindObjectOfType<UIEvents>();
+        PM = FindObjectOfType<PlayerMovement>();
     }
     
     private void Update()
@@ -40,16 +42,9 @@ public class ShowDeposit : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             gameCam.gameObject.SetActive(false);
             DepositerPanelOpen = true;
+            PM.CanMove = false;
         }
-        else if(!playerInRange && !ShowShop.ShopPanelOpen)
-        {
-            depositerPanel.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            gameCam.gameObject.SetActive(true);
-            DepositerPanelOpen = false;
-        }
-
+        
         if(UIEvents.MiniGarbageBinItemPurchased && Input.GetKey(MiniDepositKey) && !ShowShop.ShopPanelOpen)
         {
             depositerPanel.gameObject.SetActive(true);
@@ -57,6 +52,7 @@ public class ShowDeposit : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             gameCam.gameObject.SetActive(false);
             DepositerPanelOpen = true;
+            PM.CanMove = false;
         }
     }
     
@@ -73,5 +69,6 @@ public class ShowDeposit : MonoBehaviour
         DepositerPanelOpen = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        PM.CanMove = true;
     }
 }

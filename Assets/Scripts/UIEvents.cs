@@ -4,6 +4,8 @@ public class UIEvents : MonoBehaviour
 {
     private GarbageTextSetup GarbageTextSetup;
     private CoinCounter CoinCounter;
+    private ShowDeposit ShowDeposit;
+    private ShowShop ShowShop;
     [HideInInspector] public bool UpgradesMenuIsActive;
     [HideInInspector] public bool ItemsMenuIsActive;
     public int fastspeedupgradelevel1price;
@@ -44,16 +46,18 @@ public class UIEvents : MonoBehaviour
     {
         GarbageTextSetup = GetComponent<GarbageTextSetup>();
         CoinCounter = GetComponent<CoinCounter>();
+        ShowShop = FindObjectOfType<ShowShop>();
+        ShowDeposit = FindObjectOfType<ShowDeposit>();
     }
     
     public void DepositClose()
     {
-        FindObjectOfType<ShowDeposit>().CloseSetup();
+        ShowDeposit.CloseSetup();
     }
 
     public void ShopClose()
     {
-        FindObjectOfType<ShowShop>().CloseSetup();
+        ShowShop.CloseSetup();
     }
 
     public void Deposit()
@@ -63,13 +67,13 @@ public class UIEvents : MonoBehaviour
         GarbageTextSetup.GarbageCollected -= GarbageTextSetup.GarbageCollected;
     }
 
-    public void Upgrades()
+    public void ShowUpgrades()
     {
         UpgradesMenuIsActive = true;
         ItemsMenuIsActive = false;
     }
 
-    public void Items()
+    public void ShowItems()
     {
         UpgradesMenuIsActive = false;
         ItemsMenuIsActive = true;

@@ -660,7 +660,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1056763803}
         m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: Items
+        m_MethodName: ShowItems
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2143,7 +2143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374422515}
-  m_LocalRotation: {x: 0.024449792, y: 0.000000017234804, z: -4.215133e-10, w: 0.9997011}
+  m_LocalRotation: {x: 0.024449792, y: -0.000000017234797, z: 4.2151313e-10, w: 0.9997011}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2537,7 +2537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &418104480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2552,7 +2552,7 @@ RectTransform:
   m_Children:
   - {fileID: 1958974968}
   m_Father: {fileID: 536488078}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3511,7 +3511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &536488078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3524,8 +3524,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 418104480}
   - {fileID: 1972848044}
+  - {fileID: 418104480}
   - {fileID: 500249528}
   - {fileID: 589605536}
   - {fileID: 1054277335}
@@ -3781,6 +3781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4.5
+  CanMove: 1
   orientation: {fileID: 2142555774}
   anim: {fileID: 1664858315194430801}
 --- !u!114 &592883835
@@ -5351,7 +5352,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1056763803}
         m_TargetAssemblyTypeName: UIEvents, Assembly-CSharp
-        m_MethodName: Upgrades
+        m_MethodName: ShowUpgrades
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5657,6 +5658,8 @@ MonoBehaviour:
   MoveSpeedUpgradeIncreaseValueForLevel1: 5
   MoveSpeedUpgradeIncreaseValueForLevel2: 5.5
   MoveSpeedUpgradeIncreaseValueForLevel3: 6
+  MiniGarbageBinItemPurchased: 0
+  MiniShopStallItemPurchased: 0
   minigarbagebinitemprice: 500
   minishopstallitemprice: 500
   MGBIB: {fileID: 1345862888}
@@ -8083,7 +8086,7 @@ RectTransform:
   - {fileID: 2089034681}
   - {fileID: 819147031}
   m_Father: {fileID: 536488078}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11411,6 +11414,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   DepositKey: 101
+  MiniDepositKey: 110
   gameCam: {fileID: 1761866597}
   DepositerPanelOpen: 0
 --- !u!114 &5382153024788067732
@@ -11431,6 +11435,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   ShopKey: 101
+  MiniShopKey: 109
   ShopPlayerRange: 1
   ShopPanelOpen: 0
   UpgradesPanel: {fileID: 1972848043}

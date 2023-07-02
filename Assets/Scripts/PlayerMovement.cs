@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
+    [HideInInspector] public bool CanMove = true;
 
     [Header("Objects & Components")]
     public Transform orientation;
@@ -62,7 +63,11 @@ public class PlayerMovement : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         //Adding movement force
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        if(CanMove)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+
         moveDirection = moveDirection.normalized;
     }
 

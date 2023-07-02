@@ -14,11 +14,13 @@ public class ShowShop : MonoBehaviour
     [HideInInspector] public bool ShopPanelOpen;
     public GameObject UpgradesPanel;
     public GameObject ItemsPanel;
+    private PlayerMovement PM;
 
     private void Start() 
     {
         ShowDeposit = GetComponent<ShowDeposit>();
         UIEvents = FindObjectOfType<UIEvents>();
+        PM = FindObjectOfType<PlayerMovement>();
     }
     
     private void Update()
@@ -41,16 +43,9 @@ public class ShowShop : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             ShowDeposit.gameCam.gameObject.SetActive(false);
             ShopPanelOpen = true;
-            UIEvents.UpgradesMenuIsActive = true;
             UIEvents.ItemsMenuIsActive = false;
-        }
-        else if(!playerInShopRange && !ShowDeposit.DepositerPanelOpen)
-        {
-            ShopPanel.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            ShowDeposit.gameCam.gameObject.SetActive(true);
-            ShopPanelOpen = false;
+            UIEvents.UpgradesMenuIsActive = true;
+            PM.CanMove = false;
         }
 
         if(UIEvents.UpgradesMenuIsActive)
@@ -71,8 +66,9 @@ public class ShowShop : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             ShowDeposit.gameCam.gameObject.SetActive(false);
             ShopPanelOpen = true;
-            UIEvents.UpgradesMenuIsActive = true;
             UIEvents.ItemsMenuIsActive = false;
+            UIEvents.UpgradesMenuIsActive = true;
+            PM.CanMove = false;
         }
     }
 
@@ -83,5 +79,6 @@ public class ShowShop : MonoBehaviour
         ShopPanelOpen = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        PM.CanMove = true;
     }
 }
