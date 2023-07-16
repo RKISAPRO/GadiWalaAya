@@ -37,10 +37,22 @@ public class UIEvents : MonoBehaviour
     public float MoveSpeedUpgradeIncreaseValueForLevel3;
     [HideInInspector] public bool MiniGarbageBinItemPurchased = false;
     [HideInInspector] public bool MiniShopStallItemPurchased = false;
+    [HideInInspector] public bool TelleporterItemPurchased = false;
+    [HideInInspector] public bool KeyItemPurchased = false;
+    [HideInInspector] public bool GCLItemPurchased = false;
+    [HideInInspector] public bool TBItemPurchased = false;
     public int minigarbagebinitemprice;
     public int minishopstallitemprice;
+    public int telleporteritemprice;
+    public int keyitemprice;
+    public int GCLitemprice;
+    public int ToxicBootsitemprice;
     public GameObject MGBIB;
     public GameObject MSSIB;
+    public GameObject TIB;
+    public GameObject KIB;
+    public GameObject GCLIB;
+    public GameObject TBIB;
     
     private void Start() 
     {
@@ -166,6 +178,46 @@ public class UIEvents : MonoBehaviour
             CoinCounter.CoinCollected -= minishopstallitemprice;
             MiniShopStallItemPurchased = true;
             MSSIB.gameObject.SetActive(true);
+        }
+    }
+
+    public void PurchaseTelleporterItem()
+    {
+        if(CoinCounter.CoinCollected >= telleporteritemprice && !TelleporterItemPurchased)
+        {
+            CoinCounter.CoinCollected -= telleporteritemprice;
+            TelleporterItemPurchased = true;
+            TIB.gameObject.SetActive(true);
+        }
+    }
+
+    public void PurchaseKeyItem()
+    {
+        if(CoinCounter.CoinCollected >= keyitemprice && !KeyItemPurchased)
+        {
+            CoinCounter.CoinCollected -= keyitemprice;
+            KeyItemPurchased = true;
+            KIB.gameObject.SetActive(true);
+        }
+    }
+
+    public void PurchaseGCLItem()
+    {
+        if(CoinCounter.CoinCollected >= GCLitemprice && !GCLItemPurchased)
+        {
+            CoinCounter.CoinCollected -= GCLitemprice;
+            GCLItemPurchased = true;
+            GCLIB.gameObject.SetActive(true);
+        }
+    }
+
+    public void PurchaseTBItem()
+    {
+        if(CoinCounter.CoinCollected >= ToxicBootsitemprice && !TBItemPurchased)
+        {
+            CoinCounter.CoinCollected -= ToxicBootsitemprice;
+            TBItemPurchased = true;
+            TBIB.gameObject.SetActive(true);
         }
     }
 }
