@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     private void SpeedControl()
     {
         //Setting up velocity config
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Vector3 flatVel = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
 
         // limit velocity if needed
         if(flatVel.magnitude > moveSpeed)
